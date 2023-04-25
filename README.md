@@ -1,4 +1,6 @@
 # SA-1B-Downloader
+简体中文 | [English](./README_EN.md)
+
 此脚本可以从opendatalab.com方便地下载SA-1B数据集。
 
 优势：
@@ -21,3 +23,7 @@
 ## 成功运行示例
 
 ![1](https://user-images.githubusercontent.com/34768678/234219130-d68ef830-ee07-4a3d-8a5a-909a30efd0d3.png)
+
+## 致谢
+
+感谢OpenDataLab公开的数据集，以及ChatGPT在脚本方面提供的帮助。
