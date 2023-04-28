@@ -35,8 +35,8 @@ def download_files(dataset_id):
     # For each file, POST size and name in payload to obtain the download url, and download it
     for file in files:
         filename = 'raw/' + file["path"]
-        if filename in EXCLUDE_FILENAME:
-            print(f"{filename} already exists, skip ...")
+        if file["path"] in EXCLUDE_FILENAME:
+            print(f"{file['path']} already exists, skip ...")
             continue
         print(f"Downloading {filename}...")
         EXCLUDE_FILENAME.add(filename)
