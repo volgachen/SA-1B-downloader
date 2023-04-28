@@ -1,6 +1,7 @@
 import requests
 import wget
 import time
+import glob
 
 START_PAGE_NO = 
 END_PAGE_NO = 
@@ -13,7 +14,7 @@ HEADERS = {
     #"eagleeye-traceid": "<your_traceid_here>",
     "user-agent": "<your_user_agent_here>"
 }
-EXCLUDE_FILENAME = set()
+EXCLUDE_FILENAME = set(glob.glob("sa_00*.tar"))
 
 def download_files(dataset_id):
     global EXCLUDE_FILENAME
@@ -24,7 +25,8 @@ def download_files(dataset_id):
         files_url = f"https://opendatalab.com/api/datasets/{dataset_id}/files"
         params = {
             "pageSize": PAGE_SIZE,
-            "pageNo": page_no
+            "pageNo": page_no,
+            "prefix": "raw",
         }
         response = requests.get(files_url, params=params, headers=HEADERS)
         response.raise_for_status()
@@ -32,8 +34,9 @@ def download_files(dataset_id):
 
     # For each file, POST size and name in payload to obtain the download url, and download it
     for file in files:
-        filename = file["path"].split("/")[-1]
+        filename = 'raw/' + file["path"]
         if filename in EXCLUDE_FILENAME:
+            print(f"{filename} already exists, skip ...")
             continue
         print(f"Downloading {filename}...")
         EXCLUDE_FILENAME.add(filename)
@@ -46,6 +49,7 @@ def download_files(dataset_id):
         response.raise_for_status()
         download_url = response.json()["data"][0]["url"]
         start_time = time.time()
+        print("URL:", download_url)
         wget.download(download_url)
         end_time = time.time()
         print(f"Time taken to download {filename}: {end_time - start_time:.2f} seconds\n")
