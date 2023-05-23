@@ -26,4 +26,4 @@
 
 ## 致谢
 
-感谢OpenDataLab公开的数据集，以及ChatGPT在脚本方面提供的帮助。
+感谢FacebookResearch公开的数据集，OpenDataLab上传的文件，以及ChatGPT在脚本方面提供的帮助。
