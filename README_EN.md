@@ -26,4 +26,4 @@ Advantages:
 
 ## Acknowledgement
 
-We thank OpenDataLab to share these files and thank ChatGPT to help me with the script.
+We thank FacebookResearch to share the dataset, OpenDataLab to upload them, and ChatGPT to help me with the script.
